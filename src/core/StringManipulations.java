@@ -1,5 +1,7 @@
 package core;
 
+import java.util.Arrays;
+
 public class StringManipulations {
 	public static void main(String[] args) {
 		//Java will use special memory area inside heap memory called StringPool. 
@@ -97,6 +99,146 @@ public class StringManipulations {
 		System.out.println("Get the substring of the string m1: " + m1.substring(1, m1.length() - 2)); //end index is exclusive & start is inclusive
 		System.out.println("Replace all the occurrence of character in the string m1: " + m1.replace('T', 't'));
 		System.out.println("Replace all the occurrence of character in the string m1 using RegX: " + m1.replaceAll("T", "t"));
+		System.out.println("Contains the word or substring: " + m1.contains("Wor"));
+		
+		//For primitive data types, the value will be checked with == operator
+		//For non primitive data types, the reference will be checked with == operator
+		//For reference types, equals() will be used to check the value and not the references
+		int i = 10, j = 10;
+		if(i == j) {
+			System.out.println("Same");
+		} else {
+			System.out.println("False");
+		}
+		
+		//Check substring is available in the word
+		String fullText = "Automation testing is used to find the defects before releases. Automation testing contains multiple types"
+				+ " like UI automation, API automation, Mobile automation testing, Security automation testing, performance automation testing. Others are mostly will be performed manually"
+				+ " choas testing for resilency, manual testing, etc...";
+		String subText = "tomat";
+		System.out.println("SubString 'tomat' is available in the full text: " + isSubstringContains(fullText, subText));
+		System.out.println("SubString 'tomat' count in the full text: " + substringOccurrenceCount(fullText, subText));
+		
+		//String format
+		String n1 = "age is: ";
+		int age1 = 35;
+		String newFormedString =  String.format("%s%d", n1, age1);
+		System.out.println("Formated string: " + newFormedString);
+		
+		reverseString1();
+		reverseString2();
+		reverseString3();
+		reverseString4();
+		reverseString5();
+		reverseWordInString();
+		palindromeCheck();
+		
 	}
 	
+	private static void reverseWordInString() {
+		String st = "reverse word in a string";
+		String[] stA = st.split(" ");
+		//String re = "";
+		StringBuilder sb = new StringBuilder();
+		for(String ss : stA) {
+			//re = re +" " + reverseRecursively(ss);
+			sb.append(reverseRecursively(ss)).append(" ");
+		}
+		//System.out.println("Reverse word: " + re);
+		System.out.println("Reverse word: " + sb);
+	}
+
+	private static void palindromeCheck() {
+		// Palindrome check using left and right pointer
+		String s1 = "sees";
+		int left = 0;
+		int right =  s1.length() - 1;
+		while(left < right) {
+			if(s1.charAt(left) != s1.charAt(right)) {
+				System.out.println("Not palindrome");
+				return;
+			}
+			left++;
+			right--;
+		}
+		System.out.println("Palindrome");
+	}
+
+	private static void reverseString5() {
+		// Reverse string using inplace
+		String s1 = "Test";
+		char[] sC = s1.toCharArray();
+		for(int i=0, j=s1.length()-1; i < j; i++, j--) {
+			char temp = s1.charAt(i);
+			sC[i] = sC[j];
+			sC[j] = temp;
+		}
+		System.out.println("reversed using inplace char: " + new String(sC));
+		
+	}
+
+	public static boolean isSubstringContains(String fullText, String subText) {
+		return fullText.contains(subText);
+	}
+	
+	public static int substringOccurrenceCount(String fullText, String subText) {
+		int count = 0;
+		int index = 0;
+		
+		while(true) {
+			if((index = fullText.indexOf(subText, index)) != -1) {
+				count++;
+				System.out.println("Count: " + count);
+				System.out.println("IndexOf substring " + subText + " is " + index);
+				index = index + subText.length();
+			} else {
+				break;
+			}
+		}
+		return count;
+	}
+	
+	public static void reverseString1() {
+		//Using mutable string - StringBuilder & StringBuffer
+		StringBuilder sb = new StringBuilder("Testing!");
+		System.out.println(sb.reverse().toString());
+		
+		StringBuffer sbu = new StringBuffer("Testing tales!");
+		System.out.println(sbu.reverse().toString());
+	}
+	
+	public static void reverseString2() {
+		//Using loop
+		String sb = "using loop!";
+		char[] chA = new char[sb.length()];
+		for(int i = sb.length() - 1; i>=0; i--) {
+			chA[sb.length() - (i + 1)] = sb.charAt(i);			
+		}
+		System.out.println("Resversed string using loop: " + new String(chA));
+	}
+	
+	public static void reverseString3() {
+		//Using loop
+		String s = "using StringBuffer with loop!";
+		StringBuffer sbu = new StringBuffer();
+		for(int i = s.length() - 1; i>=0; i--) {
+			sbu.append(s.charAt(i));
+		}
+		//reversed string
+		System.out.println("Resversed string using StringBuffer with loop: " + sbu.toString());		
+	}
+	
+	public static void reverseString4() {
+		//Using loop
+		String s = "using recursion!";
+		System.out.println("Resversed string using recursion: " + reverseRecursively(s));		
+	}
+	
+	public static String reverseRecursively(String str) {
+		if(str.isEmpty()) //str.substring(1) will return empty if no substring found
+			//if(str.length() == 1)
+			return str;
+		else
+			return reverseRecursively(str.substring(1)) + str.charAt(0);
+	}
 }
