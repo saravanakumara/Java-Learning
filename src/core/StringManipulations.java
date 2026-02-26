@@ -60,6 +60,28 @@ public class StringManipulations {
 		System.out.println("Modified string - " + modifiedStr); //new string.
 		System.out.println("Original string - " + originalStr); //original string is not modified.
 		
+		String city2 = "CHE";
+		//city and city2 are pointing to the same memory location in pool area. if city==city2 return false;
+		
+		String namedStr = new String("Hello Java"); //"Hello Java" string is created in Pool area when class is loaded and heap object also created.
+		String sameNamedStr = new String("Hello Java"); //Another heap object is created for this statement, but string pool will not create again the same string during class load
+		//if nameStr==sameNamedStr will False as reference is different but value is same.
+		//String literal is memory efficient.
+		
+		//Convert string to mutable? it is possible by StringBuffer and StringBuilder		
+		StringBuilder sbd = new StringBuilder(); //It is not thread safe and fast compare to StringBuffer and used in single threaded environment
+		sbd.append("Test");
+		sbd.append("Java");
+		String sbO = sbd.toString();
+		System.out.println("StringBuilder: "+sbO);
+		
+		StringBuffer sbf = new StringBuffer(); //It is thread safe and slow compare to StringBuilder and can be used in multi thread environment
+		sbf.append("Test");
+		sbf.append("Java");
+		String sbu = sbf.toString();
+		System.out.println("StringBuffer: "+sbu);
+		
+		
 		
 	}
 	
