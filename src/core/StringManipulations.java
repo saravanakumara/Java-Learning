@@ -81,8 +81,22 @@ public class StringManipulations {
 		String sbu = sbf.toString();
 		System.out.println("StringBuffer: "+sbu);
 		
-		
-		
+		//String methods
+		String m1 = " TTest".concat("World ");
+		System.out.println("String m1 with space: " + m1);
+		System.out.println("Trim both end: " + m1.trim());
+		System.out.println("Convert to lower case: " + m1.toLowerCase());
+		System.out.println("Convert to upper case: " + m1.toUpperCase());
+		System.out.println("Get char of the character at start of the string m1: " + m1.charAt(1));
+		System.out.println("Get length of the string m1: " + m1.length());
+		System.out.println("Get last char of the string m1: " + m1.charAt(m1.length() - 2));
+		System.out.println("Comparison with case string m1: " + m1.equals(" TTestWorld "));
+		System.out.println("Comparison without case of the string m1: " + m1.equalsIgnoreCase(" TTestWorld "));
+		System.out.println("Get first occurance index of the character from the string m1: " + m1.indexOf('T')); //First occurrence
+		System.out.println("Get last occurance index of the character at start of the string m1: " + m1.lastIndexOf('t'));
+		System.out.println("Get the substring of the string m1: " + m1.substring(1, m1.length() - 2)); //end index is exclusive & start is inclusive
+		System.out.println("Replace all the occurrence of character in the string m1: " + m1.replace('T', 't'));
+		System.out.println("Replace all the occurrence of character in the string m1 using RegX: " + m1.replaceAll("T", "t"));
 	}
 	
 }
