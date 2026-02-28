@@ -1,6 +1,6 @@
 package core;
 
-public class StaticBlock extends AbstractClass{ //private, protected are not allowed for class but final, abstract, public, default are allowed
+public class StaticBlock extends AbstractClass implements Interfaces{ //private, protected are not allowed for class but final, abstract, public, default are allowed
 	int a = 10;
 	static int b;
 	//Static block will be excuted before running main().
@@ -34,7 +34,12 @@ public class StaticBlock extends AbstractClass{ //private, protected are not all
 		//AbstractClass abc = new AbstractClass(); //Abstract class can not instantiate
 		sbO.abstractTest();
 		StaticBlock.nonAbstractStatic();
-		
+		Interfaces interfacesDemo = sbO;
+		interfacesDemo.add();
+		b = interfacesDemo.method1();
+		System.out.println("interface final varaible value updated to the implemetned class variable which has same name: " + b);
+		System.out.println("interface variable: " + interfacesDemo.b);
+		interfacesDemo.add1();
 	}
 	
 	public static void main(String[] args, String str) {
@@ -51,6 +56,18 @@ public class StaticBlock extends AbstractClass{ //private, protected are not all
 		AbstractClass.nonAbstractStatic(); //static method access is not overridden here.
 		nonAbstractFinal(); //non static final method is inherited from the class not overridden.
 		
+	}
+
+	@Override
+	public void add() {
+		// TODO Auto-generated method stub
+		System.out.println("interface method add from implemented class.");
+	}
+
+	@Override
+	public void add1() {
+		// TODO Auto-generated method stub
+		System.out.println("interface methods are all absract from implemented class.");
 	}
 
 }
