@@ -1,6 +1,6 @@
 package core;
 
-public class StaticBlock { //private, protected are not allowed for class but final, abstract, public, default are allowed
+public class StaticBlock extends AbstractClass{ //private, protected are not allowed for class but final, abstract, public, default are allowed
 	int a = 10;
 	static int b;
 	//Static block will be excuted before running main().
@@ -31,11 +31,26 @@ public class StaticBlock { //private, protected are not allowed for class but fi
 		System.out.println("private contructor used to access the property in the same class. " + sbO.a);
 		System.out.println("Final variable value: " + c);
 		//c = c + 10;//final can not be changed
+		//AbstractClass abc = new AbstractClass(); //Abstract class can not instantiate
+		sbO.abstractTest();
+		StaticBlock.nonAbstractStatic();
 		
 	}
 	
 	public static void main(String[] args, String str) {
 		System.out.println("main method overload.");
+	}
+
+	//@Override - Can not override the static method of the parent class
+	public static void nonAbstractStatic() {
+		System.out.println("Non abstract method of abstract class but created same in the subclass too. accessed by object of subclass.");
+	}
+	@Override
+	public void abstractTest() {
+		System.out.println("Abstract class inherited.");
+		AbstractClass.nonAbstractStatic(); //static method access is not overridden here.
+		nonAbstractFinal(); //non static final method is inherited from the class not overridden.
+		
 	}
 
 }
