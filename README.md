@@ -50,3 +50,4 @@ Pillars to master Java coding problems,
 - InvalidArgumentException if we use XPATH in shadow DOM, use CSS selectors
 - StaleElementReferenceException if DOM re-rendered, use retry or relocate shadow host and so on
 - Use dynamic wait to handle Shadow DOM.
+- Reference: https://www.testmuai.com/blog/shadow-dom-in-selenium/
