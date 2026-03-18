@@ -16,6 +16,8 @@ Pillars to master Java coding problems,
 - *Character sequence occurrence or decode strings*
 - *Permutations & Combinations*
 - *Second smallest Digit in a String - For example, if the input is "claude2403edualc", you need to find and return the digit*
+- *FindHighFrequencyWordFromSenetence - Wipro*
+- *ReverseFirstAndLastDigits*
 - *Count Word Occurrences in a Sentence*
 	1. Given a string like "my name is Claude Claude", the goal is to print each word along with how many times it appears.
 	
