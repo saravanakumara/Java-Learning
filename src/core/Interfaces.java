@@ -6,6 +6,7 @@ package core;
 //class should be implemented
 //it has final static constants and abstract methods
 //In latest java, interfaces can have default methods which ruin the 100% abstraction
+//Why is it implemented?
 public interface Interfaces {
 	public static final int a = 02;
 	public static final int b = 23;

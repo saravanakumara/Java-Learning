@@ -19,6 +19,7 @@ public class SeparateAlphabetAndNumeric {
 		for(int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
 			
+			//isDigit, isLowerCase, isUpperCase, isWhiteSpace, isLetter
 			if(Character.isDigit(c)) {
 				sD.append(c);
 			}
